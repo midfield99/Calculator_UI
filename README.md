@@ -1,5 +1,7 @@
 Calculator_UI
-Overview. This is a demonstration of calling python scripts from a C# program and automatically creating a nuget package.
+Overview. This is a demonstration of calling python scripts from a C# program and automatically creating a nuget package**.
+
+Note: Still need to debug automatically creating the nuget package. It worked on my local repo, but it failed on the cloned repo I tested. So that needs to be fixed. The frontend and backed worked in my cloned repo though.
 
 Input Syntax: Calculator uses polish notation. Mathmatical operators are binary. So operators can only have two arguements Spaces separate different atoms for the grammar. Parentheses are assusmed. For instance "+ * 2 3 5" is equivelent to "(+ (* 2 3) 5)". Check checks the string. It just checks syntax. The string has the possibility of still being invalid. For instance "/ 6 0" is valid syntax but throws a divide by zero error. This is executed by calling calc_interface.py and using a flag with main to choose the right function. = evaluates the string. This is executed by called a specific function in the python script.
 
@@ -15,9 +17,11 @@ calc_test.py Approach: This tests calc.py, and has much more testing than Python
 
 Python vs Ironpython: This project does not use Ironpython. It's not because I thought cpython was better necessarily for this project. You can host Ironpython in C#, and you have more flexibility when working with Ironpython and C#. It might have made a couple of things easier. But there are some minor differences between cpython and IronPython, so cpython might be a better choice in some cases. And calling cpython scripts seemed a little more complicated than calling IronPython scripts. So I decided calling cpython scripts would be a better demonstration.
 
-Nuget packages: Python_Accessor should automatically create a nuget package on build. The nuget console was throwing a few errors when I tried to install the package in Calculator_UI. So I just added Python_Accessor as a reference. I would still need to look into fixing that. But automatically creating the package works.
+Nuget packages: Python_Accessor should automatically create a nuget package on build. The nuget console was throwing a few errors when I tried to install the package in Calculator_UI. So I just added Python_Accessor as a reference. I would still need to look into fixing that. Automatically creating the package works on my local repo. But it doesn't work on the cloned test repo. So something got lost or changed pushing to git.
 
 Improvements: I didn't want to use full paths for the python scripts, portability would have been a problem. So I used relative paths. Because of that the .exe looks for the python scripts in its folder. This means that each C# project needs its own copy of the python scripts. This is bad for development, I would definitely get this fixed. But putting python scripts in the same folder as the .exe isn't such a bad thing once the project would be done.
+
+Automatically creating the nuget package only works on my local repo, not the test on. So this definitely needs to be fixed when I have time.
 
 I would have changed my approach for the calculator part, I would have first tried a stack based approach for evaluation.
 
