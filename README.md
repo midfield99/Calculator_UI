@@ -1,7 +1,8 @@
 Calculator_UI
 Overview. This is a demonstration of calling python scripts from a C# program and automatically creating a nuget package**.
 
-Note: Still need to debug automatically creating the nuget package. It worked on my local repo, but it failed on the cloned repo I tested. So that needs to be fixed. The frontend and backed worked in my cloned repo though.
+Note: Still need to debug automatically creating the nuget package. Right now the Calculator_UI project is using the Python_Accessor project. I'd like it to use the nuget package that is automatically created.
+Also, the nuget command needs nuget.exe in the package folder to work. One fix is uploading the .exe to github. I'm not sure how much I like that though. The frontend and backed worked in my cloned repo though.
 
 Input Syntax: Calculator uses polish notation. Mathmatical operators are binary. So operators can only have two arguements Spaces separate different atoms for the grammar. Parentheses are assusmed. For instance "+ * 2 3 5" is equivelent to "(+ (* 2 3) 5)". Check checks the string. It just checks syntax. The string has the possibility of still being invalid. For instance "/ 6 0" is valid syntax but throws a divide by zero error. This is executed by calling calc_interface.py and using a flag with main to choose the right function. = evaluates the string. This is executed by called a specific function in the python script.
 
